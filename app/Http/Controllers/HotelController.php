@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hotel;
 use Illuminate\Http\Request;
 
 class HotelController extends Controller
@@ -9,11 +10,12 @@ class HotelController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Hotel[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return Hotel::all();
+
     }
 
     /**
@@ -30,12 +32,12 @@ class HotelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Hotel $hotel
+     * @return Hotel
      */
-    public function show($id)
+    public function show(Hotel $hotel)
     {
-        //
+        return $hotel;
     }
 
     /**
