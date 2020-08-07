@@ -16,7 +16,8 @@ class HotelSeeder extends Seeder
         $hotels = factory(Hotel::class, 5)
             ->create()
             ->each(function ($hotel){
-                $rooms = factory(Room::class, rand(1,5))->make()->toArray();
+                $rooms = factory(Room::class, rand(5,10))->make()->toArray();
+                $hotel->rooms()->createMany( $rooms );
             });
     }
 }
