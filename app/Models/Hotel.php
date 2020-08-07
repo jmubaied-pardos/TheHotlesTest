@@ -9,4 +9,8 @@ class Hotel extends Model
     protected $fillable = [
         'name', 'email', 'address', 'phone',
     ];
+
+    public function rooms(){
+        return $this->hasMany('App/Models/Room');
+    }
 }

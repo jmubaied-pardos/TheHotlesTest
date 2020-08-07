@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Hotel;
+use App\Models\Room;
 use Illuminate\Database\Seeder;
 
 class HotelSeeder extends Seeder
@@ -12,6 +13,10 @@ class HotelSeeder extends Seeder
      */
     public function run()
     {
-        $hotels = factory(Hotel::class, 5)->create();
+        $hotels = factory(Hotel::class, 5)
+            ->create()
+            ->each(function ($hotel){
+                $rooms = factory(Room::class, rand(1,5))->make()->toArray();
+            });
     }
 }
