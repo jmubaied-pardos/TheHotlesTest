@@ -13,7 +13,7 @@ class AddOpenHotelInHotelTable extends Migration
      */
     public function up()
     {
-        Schema::table('hotel', function (Blueprint $table) {
+        Schema::table('hotels', function (Blueprint $table) {
             $table->boolean('open')->default(true);
         });
     }
@@ -25,7 +25,7 @@ class AddOpenHotelInHotelTable extends Migration
      */
     public function down()
     {
-        Schema::table('hotel', function (Blueprint $table) {
+        Schema::table('hotels', function (Blueprint $table) {
             $table->dropColumn('open');
         });
     }
