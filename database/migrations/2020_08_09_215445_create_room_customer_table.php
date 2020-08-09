@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCustomerIdToRoom extends Migration
+class CreateRoomCustomerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class AddCustomerIdToRoom extends Migration
      */
     public function up()
     {
-        Schema::table('rooms', function (Blueprint $table) {
-            $table->bigInteger('customer_id')->unsigned()->nullable();
+        Schema::create('room_customer', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('room_id')->unsigned();
+            $table->foreign('room_id')->references('id')->on('rooms');
+            $table->bigInteger('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('customers');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +30,6 @@ class AddCustomerIdToRoom extends Migration
      */
     public function down()
     {
-        Schema::table('room', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('room_customer');
     }
 }

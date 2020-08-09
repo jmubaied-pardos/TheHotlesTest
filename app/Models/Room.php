@@ -13,4 +13,9 @@ class Room extends Model
         'terrace',
         'hotel_id'
     ];
+
+    public function customers(){
+        return $this->belongsToMany('App\Models\Customer','room_customer','room_id','customer_id')
+                    ->withTimestamps();
+    }
 }
