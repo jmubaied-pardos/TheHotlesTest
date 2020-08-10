@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\HotelResource;
 use App\Models\Hotel;
 use Illuminate\Http\Request;
 
@@ -33,11 +34,11 @@ class HotelController extends Controller
      * Display the specified resource.
      *
      * @param Hotel $hotel
-     * @return Hotel
+     * @return HotelResource
      */
     public function show(Hotel $hotel)
     {
-        return $hotel;
+        return new HotelResource($hotel);
     }
 
     /**
