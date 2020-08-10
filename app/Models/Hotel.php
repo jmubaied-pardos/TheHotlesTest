@@ -13,4 +13,8 @@ class Hotel extends Model
     public function rooms(){
         return $this->hasMany('App\Models\Room');
     }
+
+    public function roomsBooked($hotel_id){
+        return Room::Where('hotel_id',$hotel_id)->has('customers')->get();
+    }
 }

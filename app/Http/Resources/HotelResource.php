@@ -20,7 +20,7 @@ class HotelResource extends JsonResource
             'email' => $this->email,
             'address' => $this->address,
             'phone' => $this->phone,
-            'rooms' => RoomResource::collection($this->rooms)
+            'rooms' => RoomResource::collection($this->roomsBooked($this->id))
         ];
     }
 }

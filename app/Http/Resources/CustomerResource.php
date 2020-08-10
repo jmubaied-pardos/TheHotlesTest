@@ -15,6 +15,7 @@ class CustomerResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'identity_document' => $this->identity_document,
             'name' => $this->name,
             'surnames' => $this->surnames,
