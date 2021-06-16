@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('hotels', 'HotelController@index');
 Route::get('hotels/{hotel}', 'HotelController@show');
+Route::post('hotels', 'HotelController@store');
