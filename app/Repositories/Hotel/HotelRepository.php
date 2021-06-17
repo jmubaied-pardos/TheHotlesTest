@@ -23,14 +23,14 @@ class HotelRepository extends BaseRepository implements HotelRepositoryInterface
         return $this->model->create($attributes);
     }
 
-    public function update(array $data, $id)
-    {
-        // TODO: Implement update() method.
+    public function update(array $data, $id)    {
+
+        return $this->model->where('id', $id)->update($data);
     }
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        return $this->model->where('id', $id)->delete();
     }
 
     public function find($id)
