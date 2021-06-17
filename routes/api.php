@@ -14,10 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::middleware(['auth:api','admin:api'])->group(function () {
+    Route::post('hotels', 'HotelController@store');
+    Route::put('hotels/{id}', 'HotelController@update');
+    Route::delete('hotels/{id}', 'HotelController@delete');
 });
 
-Route::get('hotels', 'HotelController@index');
-Route::get('hotels/{hotel}', 'HotelController@show');
-Route::post('hotels', 'HotelController@store');
+Route::middleware(['auth:api'])->group(function (){
+    Route::get('hotels/{hotel}', 'HotelController@show');
+    Route::get('hotels', 'HotelController@index');
+});
+
+Route::post('login', 'LoginController@doLogin');
+Route::get('logout', 'LoginController@doLogout');
+
